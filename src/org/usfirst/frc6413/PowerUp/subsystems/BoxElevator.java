@@ -7,7 +7,6 @@ import org.usfirst.frc6413.PowerUp.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class BoxElevator extends Subsystem {
 
 	WPI_TalonSRX elevatorController = RobotMap.ElevatorController;
-	Encoder elevatorEncoder = RobotMap.ElevatorEncoder;
+	//Encoder elevatorEncoder = RobotMap.ElevatorEncoder;
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -23,23 +22,12 @@ public class BoxElevator extends Subsystem {
 	}
 	
 	public void MoveElevator(XboxController controller)
-	{
+	{		
+		double speed = deadZoneInput(controller.getY(GenericHID.Hand.kRight), 0.3)*-1;
 		
-		int encoderCount = elevatorEncoder.get();
-		System.out.println(encoderCount);
-		if(encoderCount < 500 && encoderCount >= 0) {
-			
-			double speed = deadZoneInput(controller.getY(GenericHID.Hand.kRight), 0.3)*-1;
-			
-			elevatorController.set(speed);
-		}
-		/*
-		while(encoderCount < 500) {
-			elevatorController.set(0.5);
-		}
+	
 		
-		elevatorController.set(0.0);
-		*/		
+		elevatorController.set(speed);		
 	}
 
 	private double deadZoneInput(double input, double deadZone) {

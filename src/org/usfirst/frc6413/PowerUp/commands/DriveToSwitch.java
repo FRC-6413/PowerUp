@@ -54,7 +54,7 @@ public class DriveToSwitch extends Command {
 
 	// Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.ArmIsUp = false;
+    	// this must be set and calibrated from readings on the field!
     	double distance = .2;
     	
     	pid.setAbsoluteTolerance(0.01);
@@ -63,19 +63,16 @@ public class DriveToSwitch extends Command {
     	
     	pid.reset();
 		pid.enable();
-		System.out.println("Staring drive to peg");
+		System.out.println("Staring drive to switch");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.driveBase.driveForward(.75);
+    	// pid system takes care of setting motor speed
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//double distance = Robot.driveBase.getDistanceAhead();
-    	//System.out.println(distance);
-        //return distance < .48;
     	return pid.onTarget();
     }
 
