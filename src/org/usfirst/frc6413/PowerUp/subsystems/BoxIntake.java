@@ -12,11 +12,14 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class BoxIntake extends Subsystem {
 
 	Spark intakeControllerLeft = RobotMap.IntakeControllerLeft;
 	Spark intakeControllerRight = RobotMap.IntakeControllerRight;
+	
+	DifferentialDrive intakeDrive = RobotMap.intakeDrive;
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -25,13 +28,15 @@ public class BoxIntake extends Subsystem {
 	
 	public void IntakeBox(XboxController controller)
 	{
-		double speed = deadZoneInput(controller.getY(GenericHID.Hand.kLeft), 0.3)*-1;
+		double intakeRotationMultipler = .75;
 		
-		intakeControllerLeft.set(speed);
-		intakeControllerRight.set(speed);
+		double y = deadZoneInput(controller.getY(GenericHID.Hand.kLeft), 0.3)*-1;
+		double x = deadZoneInput(controller.getX(GenericHID.Hand.kLeft), 0.3) * intakeRotationMultipler;
 		
+		intakeDrive.arcadeDrive(y, x);
 	}
-
+	
+	
 	private double deadZoneInput(double input, double deadZone) {
 		if (input <= deadZone && input >= -deadZone)
 			return 0;
@@ -52,7 +57,9 @@ public class BoxIntake extends Subsystem {
 		return bd.doubleValue();
 	}
 	
-	public void ExpelBox() {
-		
+	public void ExpelBox(double speed) {
+		// MAY NEED TO MOVE THIS TO USE intakeDrive INSTEAD OF CONTROLLERS DIRECTLY!
+		intakeControllerLeft.set(-speed);
+		intakeControllerRight.set(-speed);		
 	}
 }

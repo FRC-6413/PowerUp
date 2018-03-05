@@ -6,34 +6,29 @@ import org.usfirst.frc6413.PowerUp.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ExpelBox extends Command {
-	
+
 	public ExpelBox() {
 		requires(Robot.boxIntake);
 	}
 	
 	protected void initialize() {
-		
+		setTimeout(0.5);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	    if(RobotMap.LeftSideStart) {
-	        if(RobotMap.gameData.charAt(0) == 'L') {
-	        	System.out.println("Correct side");
-	        } else if (RobotMap.gameData.charAt(0) == 'R') {
-	        	System.out.println("Incorrect Side");
-	        }
-    	} else {
-    		if(RobotMap.gameData.charAt(0) == 'L') {
-	        	System.out.println("Incorrect Side");
-	        } else if (RobotMap.gameData.charAt(0) == 'R') {
-	        	System.out.println("Correct side");
-	        }
-    	}
+    	//Robot.driveBase.arcadeDriveMethod(Robot.oi.driveJoystick);
+    	Robot.boxIntake.ExpelBox(0.6);
+    }
+
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+    	return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.boxIntake.ExpelBox(0);
     }
 
     // Called when another command which requires one or more of the same
@@ -41,10 +36,5 @@ public class ExpelBox extends Command {
     protected void interrupted() {
     	end();
     }
-
-	@Override
-	protected boolean isFinished() {
-		return false;
-	}
 
 }

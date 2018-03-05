@@ -60,6 +60,7 @@ public class OI {
     public JoystickButton shifterButtonBack;
     
     public JoystickButton elevatorButtonUp;
+    public JoystickButton expelBoxButton;
     
     public JoystickButton testButton;
     
@@ -81,8 +82,12 @@ public class OI {
     	shifterButtonBack = new JoystickButton(driveJoystick, 5);
     	shifterButtonBack.whenPressed(new ShiftHighGear());
     	
-    	elevatorButtonUp = new JoystickButton(armJoystick, 3);
-    	elevatorButtonUp.whenPressed(new MoveElevator());
+    	//elevatorButtonUp = new JoystickButton(armJoystick, 3);
+    	//elevatorButtonUp.whenPressed(new MoveElevator());
+    	
+    	expelBoxButton = new JoystickButton(armJoystick, 2);
+    	expelBoxButton.whenPressed(new ExpelBox());
+    	
     	//1/20/2018 Update
     	/*if(!shifted) {
     		shifted = true;

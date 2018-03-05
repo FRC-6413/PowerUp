@@ -13,7 +13,7 @@ public class LeftSide extends CommandGroup {
         
     	System.out.println("FMS: " + gameData);*/
 		//addSequential(new DriveToSwitch());
-		addSequential(new ExpelBox());
+		addSequential(new ExpelBoxAutonomous());
 		RobotMap.LeftSideStart = true;		
 	}
 

@@ -8,7 +8,7 @@ public class RightSide extends CommandGroup {
 	
 	public RightSide() {
 		//addSequential(new DriveToSwitch());
-		addSequential(new ExpelBox());
+		addSequential(new ExpelBoxAutonomous());
 		RobotMap.LeftSideStart = false;
 	}
 
