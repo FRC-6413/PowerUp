@@ -16,7 +16,6 @@ public class MoveElevator extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.driveBase.arcadeDriveMethod(Robot.oi.driveJoystick);
     	Robot.boxElevator.MoveElevator(Robot.oi.armJoystick);
     }
 

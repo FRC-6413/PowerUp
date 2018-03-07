@@ -17,6 +17,7 @@ public class DriveToSwitch extends Command {
 		double distance = .2;
 		
 		requires(Robot.driveBase);
+		
 		double kP = -.4;
 		double kI = 1;
 		double kD = 5;
