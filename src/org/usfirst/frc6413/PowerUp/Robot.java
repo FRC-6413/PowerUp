@@ -64,6 +64,7 @@ public class Robot extends IterativeRobot {
         //autonomousChooser.addDefault("Drive Forward", new AutonomousCommand());
         autonomousChooser.addDefault("Left Start", new LeftSide());
         autonomousChooser.addObject("Right Start", new RightSide());
+        autonomousChooser.addObject("Drive straight", new DriveToSwitch());
         
         SmartDashboard.putData("Autonomous Mode", autonomousChooser);
     }
@@ -81,7 +82,9 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
+    	RobotMap.alliance = DriverStation.getInstance().getAlliance();
     	RobotMap.gameData = DriverStation.getInstance().getGameSpecificMessage();
+    	
     	System.out.println("FMS: " + RobotMap.gameData);
         // schedule the autonomous command (example)
     	autonomousCommand = (Command)autonomousChooser.getSelected();

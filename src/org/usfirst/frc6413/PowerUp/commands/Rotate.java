@@ -2,6 +2,7 @@ package org.usfirst.frc6413.PowerUp.commands;
 
 import org.usfirst.frc6413.PowerUp.Robot;
 import org.usfirst.frc6413.PowerUp.RobotMap;
+import org.usfirst.frc6413.PowerUp.core.RotationDirection;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -17,7 +18,9 @@ public class Rotate extends Command {
 	
     static final double kToleranceDegrees = 2.0f;
     
-	public Rotate() {
+    RotationDirection rotationDirection;    
+    
+	public Rotate(RotationDirection rotationDirection) {
 		requires(Robot.driveBase);
 		
 		turnController = new PIDController(kP, kI, kD, kF, RobotMap.ahrs, new PIDOutput() {
@@ -46,6 +49,13 @@ public class Rotate extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	// if we're lined up in front of our color, don't rotate... these should prevent us from rotating.  I hope...
+    	if(rotationDirection == RotationDirection.Left && RobotMap.gameData.toLowerCase().charAt(0) == 'l')
+    		return true;
+    	
+    	if(rotationDirection == RotationDirection.Right && RobotMap.gameData.toLowerCase().charAt(0) == 'r')
+    		return true;
+    	
     	return turnController.onTarget();
     }
 

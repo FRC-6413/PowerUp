@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
@@ -70,6 +71,7 @@ public class RobotMap {
     public static boolean LeftSideStart = false;
     public static Date ArmDownTime = new Date();
     
+    public static Alliance alliance;
     public static String gameData;
     
     public static WPI_TalonSRX ElevatorController;
