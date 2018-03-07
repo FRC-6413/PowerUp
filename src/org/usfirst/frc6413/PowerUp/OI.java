@@ -59,6 +59,9 @@ public class OI {
     public JoystickButton shifterButton; 
     public JoystickButton shifterButtonBack;
     
+    public JoystickButton elevatorButtonUp;
+    public JoystickButton expelBoxButton;
+    
     public JoystickButton testButton;
     
     public DigitalInput armTrigger;
@@ -71,12 +74,19 @@ public class OI {
 
     public OI() {
     	driveJoystick = new XboxController(0);
+    	armJoystick = new XboxController(1);
     	
     	shifterButton = new JoystickButton(driveJoystick, 6);
     	shifterButton.whenPressed(new ShiftLowGear());
     	
     	shifterButtonBack = new JoystickButton(driveJoystick, 5);
     	shifterButtonBack.whenPressed(new ShiftHighGear());
+    	
+    	//elevatorButtonUp = new JoystickButton(armJoystick, 3);
+    	//elevatorButtonUp.whenPressed(new MoveElevator());
+    	
+    	expelBoxButton = new JoystickButton(armJoystick, 2);
+    	expelBoxButton.whenPressed(new ExpelBox());
     	
     	//1/20/2018 Update
     	/*if(!shifted) {
