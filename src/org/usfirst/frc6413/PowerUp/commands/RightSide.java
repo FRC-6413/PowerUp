@@ -13,8 +13,11 @@ public class RightSide extends CommandGroup {
 		// navx rotate
 		//addSequential(new Rotate(RotationDirection.Right));	// this still needs work....
 		
+		addSequential(new TimedWait());
+		
 		// move forward
-		addSequential(new DriveToSwitch());
+		//addSequential(new DriveToSwitch());
+		addSequential(new DriveForwardTimed());
 		
 		// if we end up with the box in our grabber, expel it.  
 		//addSequential(new ExpelBoxAutonomous());
