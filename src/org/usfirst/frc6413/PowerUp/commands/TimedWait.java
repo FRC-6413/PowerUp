@@ -6,17 +6,14 @@ import org.usfirst.frc6413.PowerUp.core.RotationDirection;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ManualRotate extends Command {
+public class TimedWait extends Command {
 	
 	RotationDirection rotationDirection;
 	
 	double rotationSpeed = .5;  //TWEAK THESE VALUES
-	double timeout = 1.5;		//TWEAK THESE VALUES
+	double timeout = 5;		//TWEAK THESE VALUES
 	
-	public ManualRotate(RotationDirection rotationDirection) {
-		requires(Robot.driveBase);
-		
-		this.rotationDirection = rotationDirection;
+	public TimedWait() {
 	}
 	
 	protected void initialize() {
@@ -34,30 +31,23 @@ public class ManualRotate extends Command {
 	}
 	
 	protected void execute() {
-		if(rotationDirection == RotationDirection.Left) {
-			Robot.driveBase.rotate(0, rotationSpeed);
-		} else if(rotationDirection == RotationDirection.Right) {
-			Robot.driveBase.rotate(rotationSpeed, 0);
-		}
     }
 
     protected boolean isFinished() {
     	// if we're lined up in front of our color, don't rotate... these should prevent us from rotating.  I hope...
-    	if(rotationDirection == RotationDirection.Left && RobotMap.gameData.toLowerCase().charAt(0) == 'l')
+    	if(RobotMap.gameData.toLowerCase().charAt(0) == 'l')
     		return true;
     	
-    	if(rotationDirection == RotationDirection.Right && RobotMap.gameData.toLowerCase().charAt(0) == 'r')
+    	if(RobotMap.gameData.toLowerCase().charAt(0) == 'r')
     		return true;
     	
     	return isTimedOut();
     }
    
     protected void end() {
-    	Robot.driveBase.StopAll();
     }
 
     protected void interrupted() {
     	end();
     }
-
 }

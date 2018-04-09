@@ -5,28 +5,28 @@ import org.usfirst.frc6413.PowerUp.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class MoveElevator extends Command {
-
-	public MoveElevator() {
-		requires(Robot.boxElevator);
+public class ExtendBoxArms extends Command {
+	
+	public ExtendBoxArms() {
+		requires(Robot.boxIntakeArms);
 	}
 	
 	protected void initialize() {
+		
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.boxElevator.MoveElevator(Robot.oi.armJoystick);
+	  	Robot.boxIntakeArms.extendArms();
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
+    protected boolean isFinished() {     	
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.ElevatorController.set(0);
     }
 
     // Called when another command which requires one or more of the same
@@ -34,5 +34,4 @@ public class MoveElevator extends Command {
     protected void interrupted() {
     	end();
     }
-
 }

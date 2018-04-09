@@ -8,17 +8,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightSide extends CommandGroup {
 	
 	public RightSide() {
-		// turn if needed		
-				// manual rotate
-				addSequential(new ManualRotate(RotationDirection.Right));
-				// navx rotate
-				//addSequential(new Rotate(RotationDirection.Right));	// this still needs work....
-				
-				// move forward
-				addSequential(new DriveToSwitch());
-				
-				// if we end up with the box in our grabber, expel it.  
-				//addSequential(new ExpelBoxAutonomous());
+		// manual rotate
+		addSequential(new ManualRotate(RotationDirection.Right));
+		// navx rotate
+		//addSequential(new Rotate(RotationDirection.Right));	// this still needs work....
+		
+		addSequential(new TimedWait());
+		
+		// move forward
+		//addSequential(new DriveToSwitch());
+		addSequential(new DriveForwardTimed());
+		
+		// if we end up with the box in our grabber, expel it.  
+		//addSequential(new ExpelBoxAutonomous());
 	}
 
 }

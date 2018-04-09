@@ -62,6 +62,9 @@ public class OI {
     public JoystickButton elevatorButtonUp;
     public JoystickButton expelBoxButton;
     
+    public JoystickButton extendArms;
+    public JoystickButton retractArms;
+    
     public JoystickButton testButton;
     
     public DigitalInput armTrigger;
@@ -87,6 +90,12 @@ public class OI {
     	
     	expelBoxButton = new JoystickButton(armJoystick, 2);
     	expelBoxButton.whenPressed(new ExpelBox());
+    	
+    	extendArms = new JoystickButton(armJoystick, 3);
+    	extendArms.whenPressed(new ExtendBoxArms());
+    	
+    	retractArms = new JoystickButton(armJoystick, 4);
+    	retractArms.whenPressed(new RetractBoxArms());
     	
     	//1/20/2018 Update
     	/*if(!shifted) {

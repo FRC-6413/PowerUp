@@ -91,10 +91,11 @@ public class DriveBase extends Subsystem implements PIDOutput {
 	}
 
 	public void arcadeDriveMethod(XboxController controller) {		
-		double x = JoystickHelpers.deadZoneInput(controller.getX(GenericHID.Hand.kRight), 0.3) * -0.6;
-		double y = JoystickHelpers.deadZoneInput(controller.getY(GenericHID.Hand.kLeft), 0.1) * 0.6;
+		double x = JoystickHelpers.deadZoneInput(controller.getX(GenericHID.Hand.kRight), 0.3);
+		double y = JoystickHelpers.deadZoneInput(controller.getY(GenericHID.Hand.kLeft), 0.1) * -1;
+		System.out.println("x:" + x + " y:" + y);
 		
-		robotDrive41.arcadeDrive(x, y);			
+		robotDrive41.arcadeDrive(y, x);			
 	}
 
 	public void driveCount() {
@@ -102,7 +103,8 @@ public class DriveBase extends Subsystem implements PIDOutput {
 	}
 	
 	public void driveForward(double speed) {
-		robotDrive41.arcadeDrive(speed, 0);
+		robotDrive41.tankDrive(-speed, -speed);
+		//robotDrive41.arcadeDrive(0, speed);
 	}
 	
 	public double getDistanceAhead() {

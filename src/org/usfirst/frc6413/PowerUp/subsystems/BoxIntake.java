@@ -43,7 +43,7 @@ public class BoxIntake extends Subsystem {
 		// so something like this?
 		//intakeDrive.tankDrive(-speed, -speed);
 		
-		intakeControllerLeft.set(-speed);
+		intakeControllerLeft.set(speed);
 		intakeControllerRight.set(-speed);		
 	}
 }
