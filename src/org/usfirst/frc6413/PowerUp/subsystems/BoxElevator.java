@@ -7,13 +7,16 @@ import org.usfirst.frc6413.PowerUp.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class BoxElevator extends Subsystem {
 
 	WPI_TalonSRX elevatorController = RobotMap.ElevatorController;
+	private final DoubleSolenoid armSolenoid = RobotMap.armSolenoid;
 	//Encoder elevatorEncoder = RobotMap.ElevatorEncoder;
 	
 	@Override
@@ -26,7 +29,9 @@ public class BoxElevator extends Subsystem {
 		double speed = deadZoneInput(controller.getY(GenericHID.Hand.kRight), 0.3)*-1;
 		
 	
-		
+		if(speed != 0) {
+			armSolenoid.set(Value.kReverse);
+		}
 		elevatorController.set(speed);		
 	}
 

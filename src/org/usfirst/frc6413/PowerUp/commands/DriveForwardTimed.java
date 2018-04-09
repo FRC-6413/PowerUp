@@ -14,7 +14,7 @@ public class DriveForwardTimed extends Command {
 	}
 	
 	protected void initialize() {
-		double timeout = 3;		//TWEAK THESE VALUES
+		double timeout = 1.75;		//TWEAK THESE VALUES
 		
 		setTimeout(timeout);
 		

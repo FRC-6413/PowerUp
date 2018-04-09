@@ -76,6 +76,7 @@ public class RobotMap {
     public static String gameData;
     
     public static WPI_TalonSRX ElevatorController;
+    public static WPI_TalonSRX IntakeElevatorController;
     
     public static Spark IntakeControllerLeft;
     public static Spark IntakeControllerRight;
@@ -115,6 +116,7 @@ public class RobotMap {
         
         //elevator stuff
         ElevatorController = new WPI_TalonSRX(6);
+        IntakeElevatorController = new WPI_TalonSRX(7); 
         
         // not sure if this line is needed?  may be for just testing stuff, try without this line first
         //ElevatorController.setStatusFramePeriod(StatusFrameEnhanced.Status_3_Quadrature, 10, 10);

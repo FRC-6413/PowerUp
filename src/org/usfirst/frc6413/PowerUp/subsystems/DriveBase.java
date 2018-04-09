@@ -93,6 +93,7 @@ public class DriveBase extends Subsystem implements PIDOutput {
 	public void arcadeDriveMethod(XboxController controller) {		
 		double x = JoystickHelpers.deadZoneInput(controller.getX(GenericHID.Hand.kRight), 0.3);
 		double y = JoystickHelpers.deadZoneInput(controller.getY(GenericHID.Hand.kLeft), 0.1) * -1;
+		System.out.println("x:" + x + " y:" + y);
 		
 		robotDrive41.arcadeDrive(y, x);			
 	}
