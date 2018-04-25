@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class BoxElevator extends Subsystem {
 
 	WPI_TalonSRX elevatorController = RobotMap.ElevatorController;
+	//WPI_TalonSRX intakeController = RobotMap.IntakeElevatorController;
 	private final DoubleSolenoid armSolenoid = RobotMap.armSolenoid;
 	//Encoder elevatorEncoder = RobotMap.ElevatorEncoder;
 	
@@ -33,6 +34,7 @@ public class BoxElevator extends Subsystem {
 			armSolenoid.set(Value.kReverse);
 		}
 		elevatorController.set(speed);		
+		//intakeController.set(speed);
 	}
 
 	private double deadZoneInput(double input, double deadZone) {

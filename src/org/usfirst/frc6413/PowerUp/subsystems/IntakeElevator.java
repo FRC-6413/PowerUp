@@ -42,6 +42,6 @@ public class IntakeElevator extends Subsystem {
 		}
 		else {
 			elevatorController.set(0.0);
-		}				
+		}	
 	}	
 }
